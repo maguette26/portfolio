@@ -484,16 +484,29 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,.07);padding:
     </div>
     <div class="fp-card rv">
       <div class="fp-visual">
-        
+        <div class="fp-live-badge"><span class="fp-live-dot"></span>En ligne</div>
+        <div class="fp-mockup">
+          <div class="fp-mockup-bar"><i class="fm-r"></i><i class="fm-y"></i><i class="fm-g"></i></div>
+          <div class="fm-line" style="background:rgba(184,148,63,.5);width:65%"></div>
+          <div class="fm-line" style="background:rgba(26,22,18,.08);width:100%"></div>
+          <div class="fm-line" style="background:rgba(26,22,18,.06);width:80%"></div>
+          <div style="height:10px"></div>
+          <div class="fm-line" style="background:rgba(184,148,63,.25);width:45%"></div>
+          <div class="fm-line" style="background:rgba(26,22,18,.06);width:90%"></div>
+          <div class="fm-line" style="background:rgba(26,22,18,.05);width:70%"></div>
+          <div style="height:10px"></div>
+          <div style="height:26px;background:var(--ink);display:flex;align-items:center;padding:0 10px"><span style="font-size:.62rem;color:var(--cream);font-family:var(--ff-body);letter-spacing:.04em">Réserver →</span></div>
+        </div>
+      </div>
       <div class="fp-info">
-        <div class="fp-year">2026 · Projet Personnel(En ligne)</div>
+        <div class="fp-year">2026 · Projet Personnel</div>
         <h3 class="fp-title">Magical Hand</h3>
         <p class="fp-sub">Plateforme de réservation beauté</p>
         <p class="fp-desc">Application web déployée en production pour une maquilleuse professionnelle. Gestion complète des réservations avec 6 statuts, tableau de bord admin en temps réel, galerie photo via Cloudinary.</p>
         <div class="fp-tech">
           <span class="t-badge"><svg viewBox="0 0 24 24" width="12" height="12"><circle cx="12" cy="12" r="2.5" fill="#61DAFB"/><ellipse cx="12" cy="12" rx="10" ry="4" stroke="#61DAFB" stroke-width="1.2" fill="none"/><ellipse cx="12" cy="12" rx="10" ry="4" stroke="#61DAFB" stroke-width="1.2" fill="none" transform="rotate(60,12,12)"/></svg>React</span>
           <span class="t-badge"><svg viewBox="0 0 24 24" width="12" height="12"><path d="M3.89 15.67L6.26.46a.54.54 0 011.01-.17L9.81 5.1l-5.92 10.57zm16.8 3.69L18.44 5.36a.54.54 0 00-.92-.3L3.32 19.37l7.85 4.42a1.62 1.62 0 001.59 0l7.93-4.43zm-6.39-12.21L12.45 3.66a.54.54 0 00-.96 0L3.53 17.99l10.77-10.84z" fill="#FFCA28"/></svg>Firebase</span>
-          <span class="t-badge">Cloudinary</span> 
+          <span class="t-badge">Cloudinary</span><span class="t-badge">date-fns</span>
           <span class="t-badge"><svg viewBox="0 0 24 24" width="12" height="12" fill="white"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>Vercel</span>
         </div>
         <div class="fp-links">
@@ -658,48 +671,30 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,.07);padding:
       </div>
 
       <!-- ══ FORMULAIRE AVEC EMAILJS ══ -->
-     <div class="form-box rv-right rv-d2">
-
-  <div style="margin-bottom: 1.75rem;">
-    <h3>Contactez-moi</h3>
-    <p style="font-size:.88rem; color:rgba(250,248,244,.5); margin:.5rem 0 .75rem; line-height:1.6;">
-      Freelance, collaboration ou projet ? Je suis ouverte à toute opportunité intéressante.
-    </p>
-    <span style="display:inline-flex; align-items:center; gap:5px; font-size:.72rem; padding:4px 12px;
-      background:rgba(74,124,89,.15); color:#6BCB77; border-radius:20px; border:1px solid rgba(107,203,119,.2);">
-      ● Réponse sous 24h
-    </span>
-  </div>
-
-  <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
-    <div class="f-group">
-      <label class="f-label">Nom</label>
-      <input type="text" id="f-nom" class="f-input" placeholder="Votre nom complet"/>
-    </div>
-    <div class="f-group">
-      <label class="f-label">Email</label>
-      <input type="email" id="f-email" class="f-input" placeholder="votre@email.com"/>
-    </div>
-    <div class="f-group" style="grid-column: 1 / -1;">
-      <label class="f-label">Sujet</label>
-      <input type="text" id="f-sujet" class="f-input" placeholder="De quoi s'agit-il ?"/>
-    </div>
-    <div class="f-group" style="grid-column: 1 / -1;">
-      <label class="f-label">Message</label>
-      <textarea id="f-message" class="f-ta" placeholder="Décrivez votre projet ou opportunité..."></textarea>
+      <div class="form-box rv-right rv-d2">
+        <h3>Contactez-moi</h3>
+        <p>Je suis disponible pour des projets freelance ou des collaborations.</p>
+        <p>Je réponds généralement sous 24h.</p>
+        <div class="f-group">
+          <label class="f-label">Nom</label>
+          <input type="text" id="f-nom" class="f-input" placeholder="Votre nom complet"/>
+        </div>
+        <div class="f-group">
+          <label class="f-label">Email</label>
+          <input type="email" id="f-email" class="f-input" placeholder="votre@email.com"/>
+        </div>
+        <div class="f-group">
+          <label class="f-label">Sujet</label>
+          <input type="text" id="f-sujet" class="f-input" placeholder="De quoi s'agit-il ?"/>
+        </div>
+        <div class="f-group">
+          <label class="f-label">Message</label>
+          <textarea id="f-message" class="f-ta" placeholder="Décrivez votre projet ou opportunité..."></textarea>
+        </div>
+        <button class="f-btn" id="formBtn" onclick="handleForm(this)">Envoyer le message →</button>
+      </div>
     </div>
   </div>
-
-  <div style="display:flex; align-items:center; justify-content:space-between; margin-top:1.25rem;">
-    <span style="font-size:.72rem; color:rgba(250,248,244,.3); display:flex; align-items:center; gap:5px;">
-      🔒 Message sécurisé
-    </span>
-    <button class="f-btn" id="formBtn" onclick="handleForm(this)">
-      Envoyer le message →
-    </button>
-  </div>
-
-</div>
 </section>
 </main>
 

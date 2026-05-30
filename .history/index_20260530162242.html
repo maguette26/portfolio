@@ -811,15 +811,12 @@ window.addEventListener('scroll',()=>{
   navAs.forEach(a=>{a.style.color=a.getAttribute('href')==='#'+cur?'var(--ink)':''});
 },{passive:true});
 
-// ── EMAILJS INIT ──
-emailjs.init("IWrjhUPcbNDpc0sPa");
-
 // ── FORMULAIRE EMAILJS ──
-const EMAILJS_SERVICE_ID  = "service_8k8a0ol";
-const EMAILJS_TEMPLATE_ID = "template_jwrmkms";
+
+const EMAILJS_SERVICE_ID  = "service_8k8a0ol";   
+const EMAILJS_TEMPLATE_ID = "template_jwrmkms";   
 
 function handleForm(btn) {
-
   const nom     = document.getElementById('f-nom').value.trim();
   const email   = document.getElementById('f-email').value.trim();
   const sujet   = document.getElementById('f-sujet').value.trim();
@@ -829,52 +826,49 @@ function handleForm(btn) {
     btn.textContent = '⚠ Remplis tous les champs';
     btn.classList.add('error');
     btn.disabled = true;
-
     setTimeout(() => {
       btn.textContent = 'Envoyer le message →';
       btn.classList.remove('error');
       btn.disabled = false;
     }, 3000);
-
     return;
   }
 
+  // Validation email
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email)) {
     btn.textContent = '⚠ Email invalide';
     btn.classList.add('error');
     btn.disabled = true;
-
     setTimeout(() => {
       btn.textContent = 'Envoyer le message →';
       btn.classList.remove('error');
       btn.disabled = false;
     }, 3000);
-
     return;
   }
 
+  // Envoi via EmailJS
   btn.textContent = 'Envoi en cours...';
   btn.disabled = true;
-
-  console.log({ nom, email, sujet, message });
-
+console.log({ nom, email, sujet, message });
+emailjs.init("TA_PUBLIC_KEY");
   emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-    nom: nom,
-    email: email,
-    sujet: sujet,
-    message: message
-  })
+  from_name: nom,
+  from_email: email,
+  subject: sujet,
+  message: message,
+  reply_to: email
+})
   .then(() => {
     btn.textContent = '✓ Message envoyé !';
     btn.classList.add('sent');
     btn.disabled = false;
-
+    // Vider les champs
     document.getElementById('f-nom').value = '';
     document.getElementById('f-email').value = '';
     document.getElementById('f-sujet').value = '';
     document.getElementById('f-message').value = '';
-
     setTimeout(() => {
       btn.textContent = 'Envoyer le message →';
       btn.classList.remove('sent');
@@ -885,7 +879,6 @@ function handleForm(btn) {
     btn.textContent = '✗ Erreur — réessaie';
     btn.classList.add('error');
     btn.disabled = false;
-
     setTimeout(() => {
       btn.textContent = 'Envoyer le message →';
       btn.classList.remove('error');

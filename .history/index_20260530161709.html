@@ -851,14 +851,14 @@ function handleForm(btn) {
   // Envoi via EmailJS
   btn.textContent = 'Envoi en cours...';
   btn.disabled = true;
-console.log({ nom, email, sujet, message });
+
   emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-  from_name: nom,
-  from_email: email,
-  subject: sujet,
-  message: message,
-  reply_to: email
-})
+    from_name:  nom,
+    from_email: email,
+    subject:    sujet,
+    message:    message,
+    reply_to:   email,
+  })
   .then(() => {
     btn.textContent = '✓ Message envoyé !';
     btn.classList.add('sent');

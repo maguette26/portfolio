@@ -12,7 +12,7 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script type="text/javascript">
   (function(){
-    emailjs.init({ publicKey: " zb9zCainkLZ4Xo-h_ " });
+    emailjs.init({ publicKey: "REMPLACE_PAR_TA_PUBLIC_KEY" });
   })();
 </script>
 
@@ -812,9 +812,10 @@ window.addEventListener('scroll',()=>{
 },{passive:true});
 
 // ── FORMULAIRE EMAILJS ──
+// Remplace les 3 valeurs ci-dessous par tes clés EmailJS
 
-const EMAILJS_SERVICE_ID  = "service_8k8a0ol";   
-const EMAILJS_TEMPLATE_ID = "template_jwrmkms ";   
+const EMAILJS_SERVICE_ID  = "REMPLACE_PAR_TON_SERVICE_ID";   // ex: "service_abc123"
+const EMAILJS_TEMPLATE_ID = "REMPLACE_PAR_TON_TEMPLATE_ID";  // ex: "template_xyz789"
 
 function handleForm(btn) {
   const nom     = document.getElementById('f-nom').value.trim();
@@ -822,6 +823,7 @@ function handleForm(btn) {
   const sujet   = document.getElementById('f-sujet').value.trim();
   const message = document.getElementById('f-message').value.trim();
 
+  // Validation basique
   if (!nom || !email || !sujet || !message) {
     btn.textContent = '⚠ Remplis tous les champs';
     btn.classList.add('error');

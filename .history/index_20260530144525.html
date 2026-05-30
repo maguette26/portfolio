@@ -7,15 +7,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet"/>
-
-<!-- ══ EMAILJS ══ -->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<script type="text/javascript">
-  (function(){
-    emailjs.init({ publicKey: " zb9zCainkLZ4Xo-h_ " });
-  })();
-</script>
-
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;font-size:16px}
@@ -237,9 +228,7 @@ section{padding:clamp(5rem,10vw,8rem) clamp(1.5rem,5vw,5rem)}
 .f-ta{height:110px}
 .f-btn{width:100%;background:var(--gold);color:var(--ink);font-family:var(--ff-body);font-weight:600;font-size:.88rem;padding:14px;border:none;cursor:pointer;letter-spacing:.04em;transition:all .25s;display:flex;align-items:center;justify-content:center;gap:8px}
 .f-btn:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 8px 24px rgba(184,148,63,.3)}
-.f-btn:disabled{opacity:.7;cursor:not-allowed;transform:none}
 .f-btn.sent{background:#4a7c59;color:var(--cream)}
-.f-btn.error{background:var(--rust);color:var(--cream)}
 
 /* ── FOOTER ── */
 footer{background:var(--ink);border-top:1px solid rgba(255,255,255,.07);padding:2rem clamp(1.5rem,5vw,5rem);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
@@ -255,7 +244,10 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,.07);padding:
 @keyframes barFill{to{width:100%}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
 @keyframes fadeDown{from{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
 @keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes rotateSlow{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes popIn{0%{opacity:0;transform:scale(.7) rotate(-5deg)}100%{opacity:1;transform:scale(1) rotate(0deg)}}
 
 /* ── SCROLL REVEAL ── */
 .rv{opacity:0;transform:translateY(36px);transition:opacity .85s ease,transform .85s cubic-bezier(.16,1,.3,1)}
@@ -283,6 +275,9 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,.07);padding:
 .skill-block.vis .stag:nth-child(4){transition-delay:.2s}
 .skill-block.vis .stag:nth-child(5){transition-delay:.25s}
 .skill-block.vis .stag:nth-child(6){transition-delay:.3s}
+
+/* ── FLOATING ICON DECO ── */
+.deco-float{position:absolute;opacity:.04;pointer-events:none;animation:floatY 4s ease-in-out infinite}
 
 @media(max-width:900px){
   .about-grid,.fp-card,.edu-layout,.contact-grid{grid-template-columns:1fr}
@@ -445,7 +440,7 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,.07);padding:
         </div>
         <div class="skill-tags">
           <span class="stag"><span class="ico"><svg viewBox="0 0 24 24"><path d="M3.89 15.67L6.26.46a.54.54 0 011.01-.17L9.81 5.1l-5.92 10.57zm16.8 3.69L18.44 5.36a.54.54 0 00-.92-.3L3.32 19.37l7.85 4.42a1.62 1.62 0 001.59 0l7.93-4.43zm-6.39-12.21L12.45 3.66a.54.54 0 00-.96 0L3.53 17.99l10.77-10.84z" fill="#FFCA28"/></svg></span>Firebase</span>
-          <span class="stag"><span class="ico"><svg viewBox="0 0 24 24"><path d="M3.89 15.67L6.26.46a.54.54 0 011.01-.17L9.81 5.1l-5.92 10.57zm16.8 3.69L18.44 5.36a.54.54 0 00-.92-.3L3.32 19.37l7.85 4.42a1.62 1.62 0 001.59 0l7.93-4.43zm-6.39-12.21L12.45 3.66a.54.54 0 00-.96 0L3.53 17.99l10.77-10.84z" fill="#4479A1"/></svg></span>MySQL</span>
+          <span class="stag"><span class="ico"><svg viewBox="0 0 24 24"><path d="M16.4 5.5a.4.4 0 00-.27.03v.01c.05.1.15.18.21.27.05.1.1.21.15.32l.01-.02c.1-.07.14-.17.14-.33-.04-.05-.05-.1-.08-.14-.04-.07-.13-.1-.18-.15zM3.89 15.67L6.26.46a.54.54 0 011.01-.17L9.81 5.1l-5.92 10.57zm4.1-9.66a4.15 4.15 0 00-1.49.2c-.23 2.74-.32 5.48-.27 8.22.29 1.01.44 2.05.64 3.08l5.7-1.37c-.25-.03-.51-.05-.76-.08l.12-.04a5.2 5.2 0 001.55-.95c.41-.37.79-.8 1.07-1.27.31-.49.45-1.01.51-1.56.04-.37.03-.77-.08-1.13a3.5 3.5 0 00-.71-1.37c-.39-.45-.88-.8-1.41-1.04-.55-.25-1.13-.37-1.72-.4a6.3 6.3 0 00-1.82.2 5.4 5.4 0 00-1.35.63 5.3 5.3 0 00-.28-1.6 7.2 7.2 0 011.57-.33 7.6 7.6 0 012.12.04c.68.1 1.35.3 1.96.6a5.7 5.7 0 011.63 1.2c.45.48.8 1.04 1.03 1.64.23.6.32 1.25.29 1.88-.03.64-.16 1.27-.43 1.87a5.4 5.4 0 01-.96 1.51 5.5 5.5 0 01-1.41 1.08c-.52.27-1.08.44-1.65.53-.8.12-1.61.11-2.4-.03a7 7 0 01-2.12-.72 6.9 6.9 0 01-1.7-1.28 7 7 0 01-1.15-1.71 7 7 0 01-.59-2.04c-.11-.71-.12-1.43-.03-2.15.11-.72.32-1.43.64-2.08a8 8 0 011.17-1.77 7.9 7.9 0 011.67-1.33A7.6 7.6 0 019.5 5.43a8 8 0 012.15-.25c.6.01 1.2.08 1.79.23z" fill="#4479A1"/></svg></span>MySQL</span>
           <span class="stag"><span class="ico"><svg viewBox="0 0 24 24"><path d="M3.89 15.67L6.26.46a.54.54 0 011.01-.17L9.81 5.1l-5.92 10.57zm16.8 3.69L18.44 5.36a.54.54 0 00-.92-.3L3.32 19.37l7.85 4.42a1.62 1.62 0 001.59 0l7.93-4.43zm-6.39-12.21L12.45 3.66a.54.54 0 00-.96 0L3.53 17.99l10.77-10.84z" fill="#FFA000"/></svg></span>Firestore</span>
           <span class="stag"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="rgba(160,180,255,.75)" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M7 9h10M7 12h6M7 15h8"/></svg></span>Cloudinary</span>
           <span class="stag"><span class="ico"><svg viewBox="0 0 24 24"><path d="M13.976 9.15c-2.172-.806-3.356-1.426-3.356-2.409 0-.831.683-1.305 1.901-1.305 2.227 0 4.515.858 6.09 1.631l.89-5.494C18.252.975 15.697 0 12.165 0 9.667 0 7.589.654 6.104 1.872 4.56 3.147 3.757 4.992 3.757 7.218c0 4.039 2.467 5.76 6.476 7.219 2.585.92 3.445 1.574 3.445 2.583 0 .98-.84 1.545-2.354 1.545-1.875 0-4.965-.921-6.99-2.109l-.9 5.555C5.175 22.99 8.385 24 11.714 24c2.641 0 4.843-.624 6.328-1.813 1.664-1.305 2.525-3.236 2.525-5.732 0-4.128-2.524-5.851-6.591-7.305z" fill="#635BFF"/></svg></span>Stripe API</span>
@@ -499,7 +494,7 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,.07);padding:
         </div>
       </div>
       <div class="fp-info">
-        <div class="fp-year">2026 · Projet Personnel</div>
+        <div class="fp-year">2025 · Projet Personnel</div>
         <h3 class="fp-title">Magical Hand</h3>
         <p class="fp-sub">Plateforme de réservation beauté</p>
         <p class="fp-desc">Application web déployée en production pour une maquilleuse professionnelle. Gestion complète des réservations avec 6 statuts, tableau de bord admin en temps réel, galerie photo via Cloudinary.</p>
@@ -669,26 +664,12 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,.07);padding:
           </div>
         </div>
       </div>
-
-      <!-- ══ FORMULAIRE AVEC EMAILJS ══ -->
       <div class="form-box rv-right rv-d2">
         <h3>Envoyer un message</h3>
-        <div class="f-group">
-          <label class="f-label">Nom</label>
-          <input type="text" id="f-nom" class="f-input" placeholder="Votre nom complet"/>
-        </div>
-        <div class="f-group">
-          <label class="f-label">Email</label>
-          <input type="email" id="f-email" class="f-input" placeholder="votre@email.com"/>
-        </div>
-        <div class="f-group">
-          <label class="f-label">Sujet</label>
-          <input type="text" id="f-sujet" class="f-input" placeholder="De quoi s'agit-il ?"/>
-        </div>
-        <div class="f-group">
-          <label class="f-label">Message</label>
-          <textarea id="f-message" class="f-ta" placeholder="Décrivez votre projet ou opportunité..."></textarea>
-        </div>
+        <div class="f-group"><label class="f-label">Nom</label><input type="text" class="f-input" placeholder="Votre nom complet"/></div>
+        <div class="f-group"><label class="f-label">Email</label><input type="email" class="f-input" placeholder="votre@email.com"/></div>
+        <div class="f-group"><label class="f-label">Sujet</label><input type="text" class="f-input" placeholder="De quoi s'agit-il ?"/></div>
+        <div class="f-group"><label class="f-label">Message</label><textarea class="f-ta" placeholder="Décrivez votre projet ou opportunité..."></textarea></div>
         <button class="f-btn" id="formBtn" onclick="handleForm(this)">Envoyer le message →</button>
       </div>
     </div>
@@ -698,7 +679,7 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,.07);padding:
 
 <footer>
   <div class="ft-logo">Ndeye Maguette <em>Diop</em></div>
-  <div class="ft-copy">© 2026 — Tous droits réservés</div>
+  <div class="ft-copy">© 2025 — Tous droits réservés</div>
   <div class="ft-links">
     <a href="https://github.com/maguette26" target="_blank">GitHub</a>
     <a href="https://linkedin.com/in/ndeye-maguette-diop-51a45a377" target="_blank">LinkedIn</a>
@@ -803,6 +784,12 @@ document.querySelectorAll('.btn-ink').forEach(btn=>{
   btn.addEventListener('mouseleave',()=>{btn.style.transform='';});
 });
 
+// ── FORM ──
+function handleForm(btn){
+  btn.textContent='✓ Message envoyé !';btn.classList.add('sent');
+  setTimeout(()=>{btn.textContent='Envoyer le message →';btn.classList.remove('sent')},3000);
+}
+
 // ── ACTIVE NAV ──
 const sects=document.querySelectorAll('section[id]');
 const navAs=document.querySelectorAll('.nav-links a');
@@ -810,80 +797,6 @@ window.addEventListener('scroll',()=>{
   let cur='';sects.forEach(s=>{if(scrollY>=s.offsetTop-120)cur=s.id});
   navAs.forEach(a=>{a.style.color=a.getAttribute('href')==='#'+cur?'var(--ink)':''});
 },{passive:true});
-
-// ── FORMULAIRE EMAILJS ──
-
-const EMAILJS_SERVICE_ID  = "service_8k8a0ol";   
-const EMAILJS_TEMPLATE_ID = "template_jwrmkms ";   
-
-function handleForm(btn) {
-  const nom     = document.getElementById('f-nom').value.trim();
-  const email   = document.getElementById('f-email').value.trim();
-  const sujet   = document.getElementById('f-sujet').value.trim();
-  const message = document.getElementById('f-message').value.trim();
-
-  if (!nom || !email || !sujet || !message) {
-    btn.textContent = '⚠ Remplis tous les champs';
-    btn.classList.add('error');
-    btn.disabled = true;
-    setTimeout(() => {
-      btn.textContent = 'Envoyer le message →';
-      btn.classList.remove('error');
-      btn.disabled = false;
-    }, 3000);
-    return;
-  }
-
-  // Validation email
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(email)) {
-    btn.textContent = '⚠ Email invalide';
-    btn.classList.add('error');
-    btn.disabled = true;
-    setTimeout(() => {
-      btn.textContent = 'Envoyer le message →';
-      btn.classList.remove('error');
-      btn.disabled = false;
-    }, 3000);
-    return;
-  }
-
-  // Envoi via EmailJS
-  btn.textContent = 'Envoi en cours...';
-  btn.disabled = true;
-
-  emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-    from_name:  nom,
-    from_email: email,
-    subject:    sujet,
-    message:    message,
-    reply_to:   email,
-  })
-  .then(() => {
-    btn.textContent = '✓ Message envoyé !';
-    btn.classList.add('sent');
-    btn.disabled = false;
-    // Vider les champs
-    document.getElementById('f-nom').value = '';
-    document.getElementById('f-email').value = '';
-    document.getElementById('f-sujet').value = '';
-    document.getElementById('f-message').value = '';
-    setTimeout(() => {
-      btn.textContent = 'Envoyer le message →';
-      btn.classList.remove('sent');
-    }, 5000);
-  })
-  .catch((err) => {
-    console.error('EmailJS error:', err);
-    btn.textContent = '✗ Erreur — réessaie';
-    btn.classList.add('error');
-    btn.disabled = false;
-    setTimeout(() => {
-      btn.textContent = 'Envoyer le message →';
-      btn.classList.remove('error');
-    }, 4000);
-  });
-}
 </script>
 </body>
 </html>

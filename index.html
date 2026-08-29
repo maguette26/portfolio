@@ -284,12 +284,20 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,.07);padding:
 .skill-block.vis .stag:nth-child(5){transition-delay:.25s}
 .skill-block.vis .stag:nth-child(6){transition-delay:.3s}
 
-/* ── QA LEARNING BADGE ── */
+/* ── QA LEARNING BLOCK (distinct editorial treatment) ── */
+.qa-block{background:linear-gradient(155deg,#241f14 0%,var(--ink) 62%);border:1px solid rgba(184,148,63,.22);position:relative}
+.qa-block::after{transform:scaleX(1);opacity:.5;background:linear-gradient(90deg,transparent,var(--gold-light),transparent)}
+.qa-block:hover{background:linear-gradient(155deg,#2a2216 0%,#201c14 62%)}
 .skill-cat.has-badge{flex-wrap:wrap;row-gap:8px}
-.skill-cat-learn{margin-left:auto;flex:none!important;font-size:.62rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-light);background:rgba(184,148,63,.12);border:1px solid rgba(184,148,63,.3);padding:3px 9px;border-radius:20px;white-space:nowrap}
+.skill-cat-learn{margin-left:auto;flex:none!important;font-size:.62rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);background:linear-gradient(90deg,var(--gold),var(--gold-light));padding:4px 12px;border-radius:20px;white-space:nowrap;display:inline-flex;align-items:center;gap:6px}
+.skill-cat-learn::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--ink);animation:pulseDot 2.5s ease-in-out infinite}
 .skill-cat.has-badge::after{display:none}
 @media(max-width:600px){.skill-cat-learn{margin-left:0}}
-.qa-note{font-size:.76rem;color:rgba(250,248,244,.4);margin-top:1.25rem;line-height:1.6;font-style:italic}
+.qa-intro{font-size:.88rem;color:rgba(250,248,244,.55);line-height:1.75;max-width:640px;margin:1.25rem 0 2.5rem}
+.qa-groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:2rem 2.5rem}
+.qa-group-label{display:flex;align-items:center;gap:8px;font-size:.68rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-light);margin-bottom:.9rem}
+.qa-group-label i{width:5px;height:5px;border-radius:50%;background:var(--gold-light);flex-shrink:0;display:block}
+.qa-note{font-size:.76rem;color:rgba(250,248,244,.35);margin-top:2.25rem;padding-top:1.25rem;border-top:1px solid rgba(255,255,255,.07);line-height:1.65;font-style:italic}
 
 @media(max-width:900px){
   .about-grid,.fp-card,.edu-layout,.contact-grid{grid-template-columns:1fr}
@@ -387,7 +395,7 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,.07);padding:
       <div class="about-text rv-right rv-d2">
         <div class="s-tag">À propos</div>
         <h2 class="s-title">Construire des produits<br><em>qui ont du sens</em></h2>
-        <p>Je suis développeuse full-stack, actuellement en <strong>Master 2 Ingénierie Informatique et Internet</strong> à l'Omnia School de Casablanca. Je crois qu'un bon produit web naît de l'alliance entre une architecture solide et une interface soignée.</p>
+        <p>Je suis développeuse full-stack, titulaire d'un <strong>Master 2 Ingénierie Informatique et Internet</strong> de l'Omnia School de Casablanca. Je crois qu'un bon produit web naît de l'alliance entre une architecture solide et une interface soignée.</p>
         <p>Mon parcours a commencé par l'<strong>électronique industrielle</strong> à Dakar, ce qui m'a donné une approche systémique des problèmes — une qualité que j'applique aujourd'hui au développement web, de la conception des APIs à l'expérience utilisateur.</p>
         <p>Mon application <strong>Magical Hand by Mamifa</strong> est déployée en production sur Vercel, avec de vraies utilisatrices qui réservent leurs séances chaque jour.</p>
         <p>Je m'intéresse également de près au <strong>Software Testing / QA</strong> : je consolide actuellement mes bases en tests fonctionnels et en assurance qualité, en complément de mon profil de développeuse.</p>
@@ -480,7 +488,7 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,.07);padding:
       </div>
 
       <!-- QA & SOFTWARE TESTING (en apprentissage) -->
-      <div class="skill-block rv rv-d1" style="grid-column:1 / -1">
+      <div class="skill-block qa-block rv rv-d1" style="grid-column:1 / -1">
         <div class="skill-cat has-badge">
           <span class="skill-cat-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold-light)" stroke-width="1.8" width="20" height="20"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
@@ -488,20 +496,42 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,.07);padding:
           QA &amp; Software Testing
           <span class="skill-cat-learn">En apprentissage</span>
         </div>
-        <div class="skill-tags">
-          <span class="stag">Software Testing</span>
-          <span class="stag">Tests fonctionnels</span>
-          <span class="stag">Test Cases</span>
-          <span class="stag">Scénarios de test</span>
-          <span class="stag">Tests positifs &amp; négatifs</span>
-          <span class="stag">Tests de régression</span>
-          <span class="stag">Tests d'intégration</span>
-          <span class="stag">Tests système</span>
-          <span class="stag">Tests d'acceptation</span>
-          <span class="stag">Identification &amp; documentation des bugs</span>
-          <span class="stag">Sévérité &amp; priorité</span>
-          <span class="stag">Bases de l'API Testing</span>
-          <span class="stag">Notions de Jira</span>
+        <p class="qa-intro">En complément du développement, je consolide actuellement mes bases en assurance qualité — méthodologie de test, typologie des tests, suivi des anomalies et premiers outils du métier.</p>
+        <div class="qa-groups">
+          <div class="qa-group">
+            <div class="qa-group-label"><i></i>Méthodologie</div>
+            <div class="skill-tags">
+              <span class="stag">Software Testing</span>
+              <span class="stag">Tests fonctionnels</span>
+              <span class="stag">Test Cases</span>
+              <span class="stag">Scénarios de test</span>
+              <span class="stag">Tests positifs &amp; négatifs</span>
+            </div>
+          </div>
+          <div class="qa-group">
+            <div class="qa-group-label"><i></i>Types de tests</div>
+            <div class="skill-tags">
+              <span class="stag">Tests de régression</span>
+              <span class="stag">Tests d'intégration</span>
+              <span class="stag">Tests système</span>
+              <span class="stag">Tests d'acceptation</span>
+            </div>
+          </div>
+          <div class="qa-group">
+            <div class="qa-group-label"><i></i>Suivi des anomalies</div>
+            <div class="skill-tags">
+              <span class="stag">Identification des bugs</span>
+              <span class="stag">Documentation des bugs</span>
+              <span class="stag">Sévérité &amp; priorité</span>
+            </div>
+          </div>
+          <div class="qa-group">
+            <div class="qa-group-label"><i></i>Outils</div>
+            <div class="skill-tags">
+              <span class="stag">Bases de l'API Testing</span>
+              <span class="stag">Notions de Jira</span>
+            </div>
+          </div>
         </div>
         <p class="qa-note">Compétences en cours d'acquisition, à titre personnel — pas encore d'expérience professionnelle en QA.</p>
       </div>
@@ -588,7 +618,7 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,.07);padding:
     </div>
     <div class="edu-layout">
       <div class="timeline rv-left">
-        <div class="tl-item cur">
+        <div class="tl-item">
           <div class="tl-year">2025–2026 </div>
           <div class="tl-deg">Master 2 — Ingénierie Informatique et Internet</div>
           <div class="tl-school">Omnia School of Business and Technology</div>

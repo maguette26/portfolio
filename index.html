@@ -1011,7 +1011,7 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,.08);padding:
           <li class="stag"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="rgba(160,180,255,.85)" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="M21 16l-5-5-9 9"/></svg></span>Cloudinary</li>
           <li class="stag"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#FF6C37"/><path d="M8 15.5l5.5-5.5 1.5 1.5L9.5 17H8zM14.5 9l1-1a1.4 1.4 0 012 2l-1 1z" fill="#fff"/></svg></span>Postman</li>
         </ul>
-        <p class="skill-note">Postman : bases des tests d'API, en cours d'apprentissage.</p>
+        <p class="skill-note">Postman : tests d'API (envoi de requêtes et vérification des réponses).</p>
       </div>
 
       <!-- OUTILS & DÉPLOIEMENT -->
@@ -1048,7 +1048,7 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,.08);padding:
               <li>Tests fonctionnels des parcours de mes applications</li>
               <li>Rédaction de cas de test et de scénarios positifs et négatifs</li>
               <li>Tests de régression après une modification</li>
-              <li>Tests d'API avec Postman (bases)</li>
+              <li>Tests d'API avec Postman</li>
             </ul>
           </div>
           <div>
@@ -1478,7 +1478,8 @@ form.addEventListener('submit',function(e){
   loadSdk().then(function(emailjs){
     return emailjs.send(EMAILJS.serviceId,EMAILJS.templateId,{
       nom:fields.nom.value.trim(),email:fields.email.value.trim(),
-      sujet:fields.sujet.value.trim(),message:fields.message.value.trim()
+      sujet:fields.sujet.value.trim(),message:fields.message.value.trim(),
+      date:new Date().toLocaleString('fr-FR',{dateStyle:'long',timeStyle:'short'})
     });
   }).then(function(){
     setLast();form.reset();updateCount();
